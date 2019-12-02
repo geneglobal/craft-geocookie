@@ -45,8 +45,8 @@ class GeoService extends Component
          } else {
              // Cookie doesn't exist, so fetch the user's location using api source and store it as a cookie, set 'cached' to false to show that the cookie didn't exist
              $apiSource = $settings->apiSource;
-             $location = unserialize($this->getLocation($settings, $ipAddress));
-             // $location->cached = false;
+             $location = $this->getLocation($settings, $ipAddress);
+             $location->cached = false;
 
              // Log this
              GeoCookie::$plugin->logService->insertLog(LogRecord::STATUS_SUCCESS, $apiSource, $location);
